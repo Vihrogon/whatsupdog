@@ -1,0 +1,12 @@
+{
+  "folders": [
+    {
+      "path": ".."
+    },
+    {
+      "path": "../../whatsupdog-client"
+    }
+  ],
+  "remoteAuthority": "wsl+Ubuntu-20.04",
+  "settings": {}
+}
