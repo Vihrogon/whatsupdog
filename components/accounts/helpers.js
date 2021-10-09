@@ -13,23 +13,31 @@ export async function hash(string) {
 }
 
 /**
- * Push all key names from "error.errors" to array
- * @param {String[]} array
+ * Compare the provided string against the hash
+ * @param {String} string
+ * @param {String} hash
+ * @returns {Boolean}
+ */
+export async function compare(string, hash) {
+  if (hash && string) {
+    return await bcrypt.compare(string, hash)
+  }
+  return false
+}
+
+/**
+ * Returns an object with key(field name) value(error message) pairs
  * @param {Object} error
  * @param {Object} error.errors
- * @returns {String[]}
+ * @param {String} error.errors.message
+ * @returns {Object}
  */
-export function insertInvalidFields(array, error) {
-  if (error && error.errors) {
-    Object.keys(error.errors).forEach((key) => {
-      if (
-        error.errors.hasOwnProperty(key) &&
-        !array.includes(key) &&
-        key !== 'hashedPassword'
-      ) {
-        array.push(key)
-      }
+export function populateInvalidFields({ errors }) {
+  const result = {}
+  if (errors) {
+    Object.getOwnPropertyNames(errors).forEach((name) => {
+      result[name.replace('virtual.', '')] = errors[name].message
     })
   }
-  return array
+  return result
 }
