@@ -9,6 +9,7 @@ const api = express()
 
 api.use(helmet())
 api.use(cors())
+
 api.use(express.json())
 
 api.use(accounts)
@@ -19,7 +20,7 @@ api.use(function (req, res, next) {
     .json({ success: false, message: 'Route ' + req.url + ' Not found.' })
 })
 api.use(function (error, req, res, next) {
-  return res.status(500).json({ success: false, error })
+  return res.status(500).json({ success: false, error: error.type })
 })
 
 api.listen(
