@@ -1,5 +1,11 @@
-# whatsupdog-api
+# whatsupdog
 
 ## Nothin much, what's up with you?
 
-Nodejs API connected to MongoDB
+Objectives:
+-root endpoint to deliver a SSR page from a .jsx template
+-frontend to be in alpinejs and tailwindcss
+-node/express backend connected to mongodb
+-API with CRUD operetions for account and session
+-deploy to home server
+-dockerize (optional)

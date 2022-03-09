@@ -1,23 +1,25 @@
 {
-  "name": "whatsupdog-api",
+  "name": "whatsupdog",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "This project is for learning purposes",
+  "main": "server.js",
   "type": "module",
   "scripts": {
+    "test": "test",
+    "start": "node server.js",
     "dev": "nodemon server.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Vihrogon/whatsupdog-api.git"
+    "url": "git+https://github.com/Vihrogon/whatsupdog.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Vihrogon/whatsupdog-api/issues"
+    "url": "https://github.com/Vihrogon/whatsupdog/issues"
   },
-  "homepage": "https://github.com/Vihrogon/whatsupdog-api#readme",
+  "homepage": "https://github.com/Vihrogon/whatsupdog#readme",
   "devDependencies": {
     "nodemon": "^2.0.13"
   },
@@ -25,7 +27,8 @@
     "bcrypt": "^5.0.1",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
+    "express-session": "^1.17.2",
     "helmet": "^4.6.0",
     "mongoose": "^6.0.8"
   }
