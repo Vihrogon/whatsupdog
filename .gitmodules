@@ -1,0 +1,3 @@
+[submodule "whatsupdog-env"]
+	path = whatsupdog-env
+	url = https://github.com/Vihrogon/whatsupdog-env.git
