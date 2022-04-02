@@ -4,20 +4,13 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      http-equiv="Content-Security-Policy"
-      content="script-src 'unsafe-eval' https://unpkg.com https://cdn.tailwindcss.com"
-    />
     <title>Whatsupdog</title>
-    <link rel="icon" href="favicon.ico" type="image/ico" />
+    <link rel="icon" href="favicon.png" type="image/png" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <script
-      defer
-      src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"
-    ></script>
+    <script defer src="https://unpkg.com/alpinejs"></script>
   </head>
   <body>
-    <div x-data="{ open: true }">
+    <div class="bg-slate-500" x-data="{ open: true }">
       <button @click="open = open ? false : true">Expand</button>
       <span x-show="open"> Content... </span>
     </div>
