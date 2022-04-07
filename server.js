@@ -1,4 +1,4 @@
-import { DB, PORT, SECRET, CERTIFICATE, PRIVATEKEY } from './config.js'
+import { PORT, SECRET, CERTIFICATE, PRIVATEKEY } from './config.js'
 import https from 'https'
 import express from 'express'
 import session from 'express-session'
@@ -152,5 +152,5 @@ const register = checkSchema({
 })
 
 api.post('/register', register, function (req, res) {
-  res.json
+  res.json({error: false})
 })

@@ -1,6 +1,5 @@
-//import * as env from './whatsupdog-env/env.js'
-export const DB = process.env.DB || env.DB
-export const PORT = process.env.PORT || env.PORT
-export const SECRET = process.env.SECRET || env.SECRET
-export const PRIVATEKEY = process.env.PRIVATEKEY || env.PRIVATEKEY
-export const CERTIFICATE = process.env.CERTIFICATE || env.CERTIFICATE
+export const DB = process.env.DB || 'dev'
+export const PORT = process.env.PORT || '3000'
+export const SECRET = process.env.SECRET || 'devsecret'
+export const PRIVATEKEY = process.env.PRIVATEKEY || ''
+export const CERTIFICATE = process.env.CERTIFICATE || ''

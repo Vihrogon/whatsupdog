@@ -6,8 +6,8 @@
   "type": "module",
   "scripts": {
     "test": "test",
-    "start": "node server.js",
-    "dev": "nodemon -r dotenv/config server.js dotenv_config_path=whatsupdog-env/.env",
+    "start": "node -r dotenv/config server.js dotenv_config_path=whatsupdog-env/.env",
+    "dev": "nodemon server.js",
     "dev:js": "npx esbuild frontend/alpine.js --outfile=public/main.js --bundle",
     "/dev:css": "npx tailwindcss -i ./frontend/tailwind.css -o ./public/main.css -m",
     "dev:css": "npx tailwindcss -o ./public/main.css -m",

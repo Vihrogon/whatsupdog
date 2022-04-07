@@ -1,17 +1,18 @@
+import { DB } from './config.js'
 import createSqlWasm from 'node-sql-wasm'
 
 var { Database, Statement } = await createSqlWasm()
 
-const db = await new Database({ dbfile: 'test.db' })
+const db = await new Database({ dbfile: DB + '.db' })
 
 // From here on, the SQL.js API can be used...
 //db.query(`DROP TABLE IF EXISTS accounts`)
 
-/* db.query(`
+db.query(`
     CREATE TABLE IF NOT EXISTS accounts (
     email TEXT PRIMARY KEY,
     name TEXT)
-  `) */
+  `)
 
 //db.query(`CREATE UNIQUE INDEX IF NOT EXISTS id ON accounts (email)`)
 //console.log(db.query(`SELECT email, name FROM accounts`))
