@@ -152,5 +152,5 @@ const register = checkSchema({
 })
 
 api.post('/register', register, function (req, res) {
-  res.json({error: false})
+  res.json({ error: false })
 })
