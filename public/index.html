@@ -14,5 +14,34 @@
       <button @click="open = open ? false : true">Expand</button>
       <span x-show="open"> Content... </span>
     </div>
+
+    <form
+      id="register"
+      x-data="{names: '', email: '', password: '', agreement: false}"
+      class="bg-white dark:bg-slate-900"
+    >
+      <fieldset class="flex flex-col border">
+        <legend class="mx-auto dark:text-white">Registration Form</legend>
+        <input type="text" x-model="names" class="bg-white dark:bg-slate-900" />
+        <input
+          type="email"
+          x-model="email"
+          class="bg-white dark:bg-slate-900"
+        />
+        <input
+          type="password"
+          x-model="password"
+          class="bg-white dark:bg-slate-900"
+        />
+        <input type="checkbox" name="" id="" x-model="agreement" class="" />
+        <button
+          type="submit"
+          value="register"
+          class="bg-bg-slate-900 dark:bg-blue-500 rounded-2xl w-min p-2 px-4 uppercase mx-auto"
+        >
+          register
+        </button>
+      </fieldset>
+    </form>
   </body>
 </html>

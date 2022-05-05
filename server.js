@@ -16,7 +16,7 @@ while (prep.step()) {
 }
 
 const api = express()
-
+const HOST = '127.0.0.1'
 const server = https
   .createServer(
     {
@@ -25,7 +25,8 @@ const server = https
     },
     api
   )
-  .listen(PORT, function () {
+  .listen(PORT, HOST, function () {
+    console.log(`Whatsupdog running at: https://${HOST}:${PORT}`)
     console.log("Nothing much, what's up with you?")
   })
 
