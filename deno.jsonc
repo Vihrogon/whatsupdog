@@ -1,0 +1,7 @@
+{
+  "tasks": {
+    "ssl": "openssl req -new -x509 -nodes -newkey rsa:4096 -extensions v3_ca -sha256 -days 30 -keyout ./dev/key.pem -out ./dev/cert.pem -subj /C=../ST=./L=./O=./OU=./CN=./emailAddress=.",
+    "dev": "ENV=dev deno run --watch --allow-net=127.0.0.1 --allow-read=./dev,./static --allow-write=./dev --allow-env main.ts",
+    "test": "deno test --allow-net=127.0.0.1 --unsafely-ignore-certificate-errors=127.0.0.1"
+  }
+}
