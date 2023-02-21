@@ -22,6 +22,7 @@ TODO implement authentication with:
    - working and tested router
    - working and tested validator
    - working and tested database
+   - working and tested templating engine
 TODO implement CRUD API for login/register
 TODO interation test login/register API
 TODO setup production environment
