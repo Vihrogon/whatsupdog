@@ -1,5 +1,6 @@
 import { serveTls } from "https://deno.land/std/http/mod.ts";
 import { loadSync } from "https://deno.land/std/dotenv/mod.ts";
+import { Router } from "./router.ts";
 
 switch (Deno.env.get("ENV")) {
   case "dev":
@@ -12,16 +13,23 @@ switch (Deno.env.get("ENV")) {
     });
 }
 
-function handler(_req: Request) {
-  return new Response();
-}
+const router = new Router();
 
-serveTls(handler, {
-  hostname: Deno.env.get("HOST"),
-  port: Number(Deno.env.get("PORT")),
-  keyFile: Deno.env.get("KEY"),
-  certFile: Deno.env.get("CERT"),
-  onListen: () => {
-    console.log("whatsupdog?");
-  },
+router.get("/", async (context) => {
+  return new Response();
 });
+
+serveTls(
+  function (req: Request) {
+    return router.route(req);
+  },
+  {
+    hostname: Deno.env.get("HOST"),
+    port: Number(Deno.env.get("PORT")),
+    keyFile: Deno.env.get("KEY"),
+    certFile: Deno.env.get("CERT"),
+    onListen: () => {
+      console.log("whatsupdog?");
+    },
+  },
+);
