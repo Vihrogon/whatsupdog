@@ -16,18 +16,29 @@ export function home(games) {
 <div class="messages">messages:</div>
 <div class="send">send</div>
 
-<div id="gamesList">
+<form id="joinGame" method="patch" action="/games">
     ${gamesList(games)}
-</div>
+</form>
 
-<form id="newGame" method="POST" action="/games">
+<form id="refreshGames" method="get" action="/games">
+    <input type="submit" name="submit" value="refresh games" />
+</form>
+
+<form id="newGame" method="post" action="/games">
     <input type="text" name="name" />
     <input type="submit" name="submit" value="create new game" />
 </form>
 
-<form id="refreshGames" method="GET" action="/games">
-    <input type="submit" name="submit" value="refresh games" />
-</form>
+<form id="playGame" method="dialog"></form>
+
+<dialog id="dialog">
+    <section>
+        game
+    </section>
+    <form id="exitGame" method="delete" action="/games">
+        <button type="submit">close</button>
+    </form>
+</dialog>
 
 </body>
 

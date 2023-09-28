@@ -63,13 +63,15 @@ router.get("/games", ({ req }) => {
     });
 });
 
-router.post("/games", async ({ req }) => {
-    const body = await getBody(req);
+router.post("/games", async ({ req, body }) => {
     const { id } = getCookies(req.headers);
     const res = { error: true, data: "cannot create new game" };
     let proceed = true;
 
-    if (!id || !/^\w{3,27}$/.test(body.name) || games.has(body.name)) {
+    if (
+        !id || !body || !("name" in body) || !/^\w{3,27}$/.test(body.name) ||
+        games.has(body.name)
+    ) {
         proceed = false;
     }
 
@@ -87,23 +89,36 @@ router.post("/games", async ({ req }) => {
         res.error = false;
         res.data = "game created";
     }
-
+    
     return new Response(JSON.stringify(res), {
         headers: { "content-type": "application/json" },
     });
 });
 
-Deno.serve((req, remote) => {
-    // TODO something with remote
-    return router.route(req);
+router.patch("/games", ({ req, body }) => {
+    const { id } = getCookies(req.headers);
+
+    if (!id || !body || !body.name || !games.has(body.name)) {
+        return new Response('{ "error": true }', { status: 400 });
+    }
+
+    const players = games.get(body.name);
+
+    if (!players || players.length === 2 || players.includes(id)) {
+        return new Response('{ "error": true }', { status: 400 });
+    }
+
+    players.push(id);
+
+    return new Response(JSON.stringify({ error: false }), {
+        headers: { "content-type": "application/json" },
+    });
 });
 
-async function getBody(req) {
-    let result = null;
-    try {
-        result = await req.json();
-    } catch (e) {
-        console.error(e);
-    }
-    return result;
-}
+Deno.serve((req, remote) => {
+    // console.info(remote.remoteAddr);
+    // TODO something with remote
+    // TODO possible place for blacklist
+    // TODO possible place for cache
+    return router.route(req);
+});

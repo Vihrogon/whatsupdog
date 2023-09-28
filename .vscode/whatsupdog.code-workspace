@@ -4,7 +4,11 @@
             "path": ".."
         }
     ],
-    "settings": { "deno.enable": true },
+    "settings": {
+        "deno.enable": true,
+        "deno.lint": true,
+        "editor.formatOnSaveMode": "file"
+    },
     "launch": {
         "version": "0.2.0",
         "configurations": [

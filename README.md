@@ -4,10 +4,10 @@
 
 ## MVP TODO
 - [x] BE home route with cookie
-- [ ] FE ability to create a new game
-- [ ] BE keep track of created games
-- [ ] FE ability to join created game
-- [ ] BE play game route
-- [ ] FE playable multiplayer tic-tac-toe
+- [x] FE ability to create a new game
+- [x] BE keep track of created games
+- [x] FE ability to join created game
+- [ ] FS exit game
+- [ ] playable multiplayer tic-tac-toe
 
 ## [LICENSE](LICENSE)

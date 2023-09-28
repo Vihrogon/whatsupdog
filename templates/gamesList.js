@@ -4,9 +4,10 @@ export function gamesList(games) {
     let result = "";
 
     games.forEach((value, key) => {
-        result += html`<div>
+        result += html`<div class="game">
     <span>${key}</span>
     <span>${value}</span>
+    <button type="submit" value="${key}">join game</button>
 </div>`;
     });
 
