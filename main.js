@@ -16,14 +16,23 @@ router.get("/", ({ req, _ }) => {
     const body = home(games);
     const headers = new Headers({ "content-type": "text/html" });
     // TODO validate UUID
-    if (!getCookies(req.headers).id) {
+    let id = getCookies(req.headers).id;
+    if (!id) {
         // setCookie(headers, { id: crypto.randomUUID() });
-        headers.set("set-cookie", `id=${crypto.randomUUID()}`);
+        id = crypto.randomUUID();
+        headers.set("set-cookie", `id=${id}`);
+    }
+    // TODO check for existing game
+    for (let [key, value] of games) {
+        // console.log("game key", key);
+        if (value.includes(id)) {
+            console.log("is in game");
+        }
     }
 
-    const res = new Response(body, { headers });
+    const response = new Response(body, { headers });
 
-    return res;
+    return response;
 });
 
 router.get("/ws", ({ req }) => {
@@ -43,10 +52,21 @@ router.get("/ws", ({ req }) => {
     sockets.set(id, socket);
 
     socket.onopen = () => console.log("socket opened");
-    socket.onmessage = (e) => {
-        console.log(e);
+    socket.onmessage = function (e) {
+        const msg = parseMsg(e.data);
+        console.dir(this);
+        if (msg === null) {
+            //
+        } else if (msg.type === "chat") {
+            //
+        } else if (msg.type === "game") {
+            //
+            // games.has()
+        }
         // TODO route messages to specific sockets
-        socket.send("test from server");
+        if (socket.bufferedAmount === 0) {
+            socket.send("test from server");
+        }
     };
     socket.onerror = (e) => console.log("socket errored:", e);
     socket.onclose = () => console.log("socket closed");
@@ -89,7 +109,7 @@ router.post("/games", async ({ req, body }) => {
         res.error = false;
         res.data = "game created";
     }
-    
+
     return new Response(JSON.stringify(res), {
         headers: { "content-type": "application/json" },
     });
@@ -115,6 +135,12 @@ router.patch("/games", ({ req, body }) => {
     });
 });
 
+router.delete("/games", ({ req, body }) => {
+    const { id } = getCookies(req.headers);
+
+    
+});
+
 Deno.serve((req, remote) => {
     // console.info(remote.remoteAddr);
     // TODO something with remote
@@ -122,3 +148,11 @@ Deno.serve((req, remote) => {
     // TODO possible place for cache
     return router.route(req);
 });
+
+function parseMsg(data) {
+    try {
+        return JSON.parse(data);
+    } catch (_) {
+        return null;
+    }
+}

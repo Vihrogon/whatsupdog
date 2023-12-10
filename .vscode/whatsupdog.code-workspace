@@ -7,7 +7,8 @@
     "settings": {
         "deno.enable": true,
         "deno.lint": true,
-        "editor.formatOnSaveMode": "file"
+        "editor.formatOnSaveMode": "file",
+        "editor.formatOnSave": true
     },
     "launch": {
         "version": "0.2.0",
@@ -18,7 +19,8 @@
                 "type": "node",
                 "program": "${workspaceFolder}/main.js",
                 "cwd": "${workspaceFolder}",
-                "runtimeExecutable": "/home/vihrogon/.deno/bin/deno",
+                // "runtimeExecutable": "/home/vihrogon/.deno/bin/deno",
+                "runtimeExecutable": "C:/Users/forkpoint/.deno/bin/deno",
                 "runtimeArgs": [
                     "run",
                     "--inspect-wait",

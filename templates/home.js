@@ -9,6 +9,7 @@ export function home(games) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>whatsupdog</title>
+    <link rel="stylesheet" href="/static/main.css" />
     <script type="module" src="/static/main.js"></script>
 </head>
 
