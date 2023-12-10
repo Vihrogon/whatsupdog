@@ -1,6 +1,9 @@
+/* @import "" */
+
 :root {
     /* font-family: 'Courier New', Courier, monospace; */
     font-size: 16px;
+    color-scheme: light dark;
 
     & * {
         font-family: 'Courier New', Courier, monospace;
